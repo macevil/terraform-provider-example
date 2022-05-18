@@ -11,7 +11,7 @@ type DNSRecordService struct {
 	sync.RWMutex
 }
 
-func NewService(items dnsRecords[string]DNSRecord) *DNSRecordService{
+func NewService(dnsRecords map[string]DNSRecord) *DNSRecordService{
 	return &DNSRecordService{
 		dnsRecords: dnsRecords
 	}

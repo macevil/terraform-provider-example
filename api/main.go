@@ -6,8 +6,9 @@ import (
 )
 
 func main() {
+	dnsRecords := map[string]server.DNSRecord{}
 	dnsRecordService := server.NewService()
-	err := dnsRecordService.ListenAndServe()
+	err := dnsRecordService.ListenAndServe(dnsRecords)
 	if err != nil {
 		log.Fatal(err)
 	}
