@@ -40,4 +40,5 @@ func (g *Greeting) ListenAndServe() error {
 	r.HandleFunc("/dnsrecords/{uuid}", handler).Methods("DELETE")
 	http.Handle("/", r)
 	log.Fatal(http.ListenAndServe(":8080", nil))
+	return nil
 }

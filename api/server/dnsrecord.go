@@ -2,9 +2,6 @@ package server
 
 import (
 	"github.com/gorilla/mux"
-	"encoding/json"
-	"fmt"
-	"log"
 	"net/http"
 )
 
