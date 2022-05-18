@@ -13,7 +13,7 @@ type DNSRecordService struct {
 
 func NewService(dnsRecords map[string]DNSRecord) *DNSRecordService{
 	return &DNSRecordService{
-		dnsRecords: dnsRecords
+		dnsRecords: dnsRecords,
 	}
 }
 
