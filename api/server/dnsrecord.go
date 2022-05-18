@@ -20,11 +20,6 @@ func (s *DNSRecordService) GetDNSRecord(w http.ResponseWriter, r *http.Request) 
 
 	s.RLock()
 	defer s.RUnlock()
-	s.shuffleItemTags()
-	if !s.itemExists(uuid) {
-		http.Error(w, "not found", http.StatusNotFound)
-		return
-	}
 
 	err := json.NewEncoder(w).Encode(s.dnsRecords[uuid])
 	if err != nil {
