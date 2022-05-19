@@ -9,8 +9,8 @@ import (
 )
 
 type DNSRecord struct {
-	name string `json:"name"`
-	uuid string `json:"uuid"`
+	Name string `json:"name"`
+	Uuid string `json:"uuid"`
 }
 
 func (s *DNSRecordService) GetDNSRecord(w http.ResponseWriter, r *http.Request) {
@@ -24,7 +24,8 @@ func (s *DNSRecordService) GetDNSRecord(w http.ResponseWriter, r *http.Request) 
 	s.RLock()
 	defer s.RUnlock()
 
-	dnsRecord := &DNSRecord{name: "test", uuid: "test"}
+	dnsRecord := &DNSRecord{name: "test", uuid: "1234"}
+	w.Header().Set("Content-Type", "application/json")
 	err := json.NewEncoder(w).Encode(dnsRecord)
 	//err := json.NewEncoder(w).Encode(s.dnsRecords[uuid])
 	if err != nil {
