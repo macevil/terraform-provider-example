@@ -1,9 +1,10 @@
 package server
 
 import (
-	"github.com/gorilla/mux"
 	"net/http"
 	"sync"
+
+	"github.com/gorilla/mux"
 )
 
 type DNSRecordService struct {
@@ -11,7 +12,7 @@ type DNSRecordService struct {
 	sync.RWMutex
 }
 
-func NewService(dnsRecords map[string]DNSRecord) *DNSRecordService{
+func NewService(dnsRecords map[string]DNSRecord) *DNSRecordService {
 	return &DNSRecordService{
 		dnsRecords: dnsRecords,
 	}

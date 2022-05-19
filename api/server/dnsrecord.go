@@ -1,13 +1,16 @@
 package server
 
 import (
-	"github.com/gorilla/mux"
+	"encoding/json"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 type DNSRecord struct {
-	Name string `json:"name"`
+	name string `json:"name"`
+	uuid string `json:"uuid"`
 }
 
 func (s *DNSRecordService) GetDNSRecord(w http.ResponseWriter, r *http.Request) {
@@ -21,7 +24,9 @@ func (s *DNSRecordService) GetDNSRecord(w http.ResponseWriter, r *http.Request) 
 	s.RLock()
 	defer s.RUnlock()
 
-	err := json.NewEncoder(w).Encode(s.dnsRecords[uuid])
+	dnsRecord := &DNSRecord{name: "test", uuid: "test"}
+	err := json.NewEncoder(w).Encode(dnsRecord)
+	//err := json.NewEncoder(w).Encode(s.dnsRecords[uuid])
 	if err != nil {
 		log.Println(err)
 		return

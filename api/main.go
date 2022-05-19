@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/macevil/terraform-provider-example/api/server"
 	"log"
+
+	"github.com/macevil/terraform-provider-example/api/server"
 )
 
 func main() {
