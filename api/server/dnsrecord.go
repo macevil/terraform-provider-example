@@ -24,7 +24,7 @@ func (s *DNSRecordService) GetDNSRecord(w http.ResponseWriter, r *http.Request) 
 	s.RLock()
 	defer s.RUnlock()
 
-	dnsRecord := &DNSRecord{name: "test", uuid: "1234"}
+	dnsRecord := &DNSRecord{"test2", "5678"}
 	w.Header().Set("Content-Type", "application/json")
 	err := json.NewEncoder(w).Encode(dnsRecord)
 	//err := json.NewEncoder(w).Encode(s.dnsRecords[uuid])
