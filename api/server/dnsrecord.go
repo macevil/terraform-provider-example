@@ -13,7 +13,7 @@ type DNSRecord struct {
 	Uuid string `json:"uuid"`
 }
 
-func (s *DNSRecordService) GetItem(w http.ResponseWriter, r *http.Request) {
+func (s *DNSRecordService) GetDNSRecord(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	uuid := vars["uuid"]
 	if uuid == "" {
@@ -23,7 +23,7 @@ func (s *DNSRecordService) GetItem(w http.ResponseWriter, r *http.Request) {
 
 	s.RLock()
 	defer s.RUnlock()
-	if !s.itemExists(uuid) {
+	if !s.dnsRecordExists(uuid) {
 		http.Error(w, "not found", http.StatusNotFound)
 		return
 	}
@@ -35,7 +35,7 @@ func (s *DNSRecordService) GetItem(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (s *DNSRecordService) itemExists(uuid string) bool {
+func (s *DNSRecordService) dnsRecordExists(uuid string) bool {
 	if _, ok := s.dnsRecords[uuid]; ok {
 		return true
 	}
